@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Use EmailJS to send email (requires setup on emailjs.com)
-        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        emailjs.send("service_c75227q", "template_x5gj9kd", {
                 from_name: name,
                 from_email: email,
                 message: message,
