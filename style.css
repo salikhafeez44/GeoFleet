@@ -18,7 +18,10 @@ header {
 }
 
 .logo {
-    height: 50px;
+    max-width: 200px;
+    max-height: 150px;
+    width: 100%;
+    height: auto;
 }
 
 nav a {
