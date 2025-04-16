@@ -1,8 +1,11 @@
+/* Base Styles */
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
     background-color: #f8f9fb;
     color: #1c1e21;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 header {
@@ -23,6 +26,19 @@ nav a {
     margin-left: 1em;
     text-decoration: none;
     font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a.active {
+    border-bottom: 2px solid #ff7e1b;
+}
+
+#theme-toggle {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
 }
 
 .hero {
@@ -47,6 +63,14 @@ section {
     padding: 3em 2em;
     max-width: 800px;
     margin: auto;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+section.fade-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .video-container {
@@ -65,9 +89,71 @@ section {
     height: 100%;
 }
 
+
+/* Contact Form */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+form input,
+form textarea {
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    width: 100%;
+}
+
+form button {
+    background-color: #0c1c2c;
+    color: white;
+    border: none;
+    padding: 0.75em;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #ff7e1b;
+}
+
+
+/* Footer */
+
 footer {
     background-color: #0c1c2c;
     color: white;
     text-align: center;
     padding: 1em;
+    margin-top: 2em;
+}
+
+
+/* Dark Mode */
+
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode header,
+body.dark-mode footer {
+    background-color: #1f1f1f;
+}
+
+body.dark-mode nav a,
+body.dark-mode #theme-toggle {
+    color: #ffffff;
+}
+
+body.dark-mode form input,
+body.dark-mode form textarea {
+    background-color: #222;
+    color: white;
+    border: 1px solid #444;
 }
