@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 from_email: email,
                 message: message,
                 to_email: "salikhafeez44@gmail.com"
-            }, "YOUR_PUBLIC_KEY")
+            }, "JRdD9dT9EoXj64VXf")
             .then(() => {
                 msg.textContent = "Your message has been sent successfully!";
                 msg.style.color = "green";
