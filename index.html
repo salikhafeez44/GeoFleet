@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GeoFleet - Smarter Fleet Management</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -65,6 +66,7 @@
             <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Your Email" required>
             <textarea id="message" placeholder="Your Message" required></textarea>
+            <div class="g-recaptcha" data-sitekey="6LcaUxorAAAAAA-lL0xEf9zSfXWdp-qzA28YuPKr"></div>
             <button type="submit">Send Message</button>
         </form>
         <div id="form-message"></div>
@@ -74,7 +76,6 @@
         <p>&copy; 2025 GeoFleet Technologies. All rights reserved.</p>
     </footer>
 
-    <!-- EmailJS SDK (Latest Module-Based) -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -109,6 +110,12 @@
 
             form.addEventListener("submit", function(e) {
                 e.preventDefault();
+                const response = grecaptcha.getResponse();
+                if (!response) {
+                    msg.textContent = "Please complete the CAPTCHA.";
+                    msg.style.color = "red";
+                    return;
+                }
                 const name = document.getElementById("name").value;
                 const email = document.getElementById("email").value;
                 const message = document.getElementById("message").value;
@@ -121,6 +128,7 @@
                     msg.textContent = "Your message has been sent successfully!";
                     msg.style.color = "green";
                     form.reset();
+                    grecaptcha.reset();
                 }).catch((error) => {
                     console.error(error);
                     msg.textContent = "Failed to send message. Please try again later.";
@@ -141,7 +149,6 @@
             fadeInElements.forEach(el => observer.observe(el));
         });
     </script>
-
 </body>
 
 </html>
