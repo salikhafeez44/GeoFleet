@@ -28,29 +28,41 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Contact Form Validation
+    // Contact Form Email Functionality (using EmailJS)
     const form = document.getElementById("contact-form");
     const msg = document.getElementById("form-message");
 
     form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const name = document.getElementById("name").value.trim();
-        const email = document.getElementById("email").value.trim();
-        const message = document.getElementById("message").value.trim();
 
-        if (!name || !email.includes("@") || !message) {
-            msg.textContent = "Please fill all fields with valid info.";
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        if (!email.includes("@") || !name || !message) {
+            msg.textContent = "Please fill out all fields correctly.";
             msg.style.color = "red";
             return;
         }
 
-        // Simulate integration (e.g., sending to email API)
-        msg.textContent = "Thank you! Your message has been sent.";
-        msg.style.color = "green";
-        form.reset();
+        // Use EmailJS to send email (requires setup on emailjs.com)
+        emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+                from_name: name,
+                from_email: email,
+                message: message,
+                to_email: "salikhafeez44@gmail.com"
+            }, "YOUR_PUBLIC_KEY")
+            .then(() => {
+                msg.textContent = "Your message has been sent successfully!";
+                msg.style.color = "green";
+                form.reset();
+            }, (error) => {
+                msg.textContent = "Failed to send message. Please try again later.";
+                msg.style.color = "red";
+            });
     });
 
-    // Scroll Animation (Optional Enhancement)
+    // Scroll Animation (Fade-in)
     const fadeInElements = document.querySelectorAll("section");
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
