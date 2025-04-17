@@ -7,6 +7,22 @@
     <title>GeoFleet - Smarter Fleet Management</title>
     <link rel="stylesheet" href="style.css" />
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <style>
+        .solution-images-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1em;
+            justify-items: center;
+            margin-top: 1em;
+        }
+
+        .solution-images-grid img {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body>
@@ -46,10 +62,10 @@
             <li>Trigger alerts such as low fuel, engine faults, or unsafe speeds</li>
             <li>Provide real-time navigation recommendations</li>
         </ul>
-        <div style="display: flex; gap: 1em; flex-wrap: wrap; justify-content: center;">
-            <img src="Warning2.png" alt="AI Low Fuel Alert Example" style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-            <img src="navigation.png" alt="AI Navigation Update Example" style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
-            <img src="abnormal.png" alt="Abnormal Driving Alert Example" style="width: 100%; max-width: 300px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+        <div class="solution-images-grid">
+            <img src="warning2.png" alt="AI Low Fuel Alert Example" />
+            <img src="navigation.png" alt="AI Navigation Update Example" />
+            <img src="warning3.png" alt="Abnormal Driving Alert Example" />
         </div>
     </section>
 
@@ -78,7 +94,7 @@
             <input type="text" id="name" placeholder="Your Name" required>
             <input type="email" id="email" placeholder="Your Email" required>
             <textarea id="message" placeholder="Your Message" required></textarea>
-            <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY"></div>
+            <div class="g-recaptcha" data-sitekey="6Ld2wRsrAAAAADKXzpQF8im1q43aWZfBTewvQdX4"></div>
             <button type="submit">Send Message</button>
         </form>
         <div id="form-message"></div>
@@ -90,7 +106,7 @@
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             emailjs.init("JRdD9dT9EoXj64VXf");
 
             const toggleBtn = document.getElementById("theme-toggle");
@@ -120,7 +136,7 @@
             const form = document.getElementById("contact-form");
             const msg = document.getElementById("form-message");
 
-            form.addEventListener("submit", function(e) {
+            form.addEventListener("submit", function (e) {
                 e.preventDefault();
                 const response = grecaptcha.getResponse();
                 if (!response) {
